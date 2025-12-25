@@ -1,0 +1,479 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ora-Talk Dental Initiative Uganda</title> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=open=Sans:wght@400;600&display=swap" rel="stylesheet"
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #008080; /* Teal */
+            --secondary-color: #00a8cc; /* Bright Blue */
+            --accent-color: #ffcc00; /* Sunny Yellow */
+            --text-dark: #333;
+            --light-bg: #f4f9f9;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            background: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            padding: 0 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .btn-signup-nav {
+            background: var(--primary-color);
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 25px;
+        }
+
+        /* --- Hero Section --- */
+        header {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 128, 128, 0.8), rgba(0, 168, 204, 0.7)), 
+                        url('https://images.unsplash.com/photo-1588776814546-1ffce47267a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        header h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+        header p.motto { font-style: italic; font-size: 1.5rem; margin-bottom: 2rem; color: var(--accent-color); }
+
+        .btn-main {
+            padding: 15px 35px;
+            background: var(--accent-color);
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .btn-main:hover { transform: scale(1.1); }
+
+        /* --- Common Section Styling --- */
+        section { padding: 80px 10%; }
+        .section-title { text-align: center; margin-bottom: 50px; color: var(--primary-color); font-size: 2.5rem; }
+
+        /* --- About Section --- */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .vision-box { background: var(--light-bg); padding: 30px; border-left: 5px solid var(--primary-color); }
+
+        /* --- Aims & Objectives --- */
+        .aims-container { background: var(--primary-color); color: white; border-radius: 20px; padding: 50px; }
+        .aims-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+        .aim-card { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; transition: 0.3s; }
+        .aim-card:hover { background: rgba(255,255,255,0.2); }
+
+        /* --- Forms (Inquiry & Signup) --- */
+        .form-container { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+        .card-form { background: var(--light-bg); padding: 40px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .btn-submit {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        .btn-submit:hover { background: var(--secondary-color); }
+
+        /* --- Contact Footer --- */
+        footer { background: #222; color: white; padding: 50px 10% 20px; text-align: center; }
+        .footer-content { display: flex; justify-content: space-around; flex-wrap: wrap; margin-bottom: 30px; }
+        .footer-box i { font-size: 1.5rem; color: var(--secondary-color); margin-bottom: 10px; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-grid, .form-container { grid-template-columns: 1fr; }
+            .nav-links { display: none; } /* Mobile menu would go here */
+            header h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo"><i class="fas fa-tooth"></i> Ora-Talk</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#aims">Aims</a></li>
+            <li><a href="#inquiry">Inquiry</a></li>
+            <li><a href="#contacts">Contacts</a></li>
+            <li><a href="#signup" class="btn-signup-nav">Sign Up</a></li>
+            <li><a href="#founders">Founders</a></li>
+            <li><a href="#donate" class="btn-donate-nav"><i class="fas fa-heart"></i> Donate</a></li>
+
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Ora-Talk Dental Initiative Uganda</h1>
+        <p class="motto">"Brightening Smiles, Empowering Communities"</p>
+        <a href="#signup" class="btn-main">Join the Initiative</a>
+    </header>
+
+    <section id="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-grid">
+            <div>
+                <p>Ora-Talk Dental Initiative Uganda is a non-profit organization dedicated to improving oral health awareness and providing dental care accessibility to underserved communities across Uganda. We believe that a healthy smile is a fundamental right.</p>
+                <br>
+                <div class="vision-box">
+                    <h3>Our Vision</h3>
+                    <p>To be the leading catalyst for a cavity-free Uganda where every citizen values and has access to quality oral healthcare.</p>
+                </div>
+            </div>
+            <img src="images/dental-care.jpg"?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Dental Care" style="width:100%; border-radius:15px;">
+        </div>
+       </div>
+</section><section id="founders" style="background-color: var(--light-bg);">
+    <h2 class="section-title">Meet Our Founders</h2>
+    <div style="text-align: center; max-width: 800px; margin: 0 auto 40px;">
+        <p>Founded in <strong>2022</strong>, Ora-Talk Dental Initiative Uganda began as a vision shared by three dedicated dental students. While witnessing the gaps in oral healthcare during their training, they decided to take action, transforming their academic passion into a community-driven movement.</p>
+    </div>
+
+    <style>
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .founder-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            padding-bottom: 20px;
+        }
+        .founder-card:hover {
+            transform: translateY(-10px);
+        }
+        .founder-img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            background-color: #ddd; /* Placeholder color */
+        }
+        .founder-card h3 {
+            margin-top: 15px;
+            color: var(--primary-color);
+        }
+        .founder-card p {
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+    </style>
+
+    <div class="founders-grid">
+        <div class="founder-card">
+            <img src="images/kato.jpg" alt="Mr. Kato Samuel" class="founder-img">
+            <h3>Mr. Kato Samuel</h3>
+            <p>Co-Founder</p>
+        </div>
+        <div class="founder-card">
+            <img src="images/frank.jpg" alt="Mr. Frank Khatete" class="founder-img">
+            <h3>Mr. Frank Khatete</h3>
+            <p>Co-Founder</p>
+        </div>
+        <div class="founder-card">
+            <img src="images/wilson.jpg" alt="Mr. Kizuula Wilson" class="founder-img">
+            <h3>Mr. Kizuula Wilson</h3>
+            <p>Co-Founder</p>
+        </div>
+
+
+    </section>
+     
+<section id="tips" style="background-color: var(--white);">
+    <h2 class="section-title">Oral Health Tips</h2>
+    <div class="aims-grid"> <div class="aim-card" style="background: var(--light-bg); color: var(--text-dark);">
+            <i class="fas fa-clock" style="color: var(--secondary-color); font-size: 2rem;"></i>
+            <h4 style="margin-top:10px;">The 2x2 Rule</h4>
+            <p>Brush your teeth for at least 2 minutes, twice a day (morning and before bed).</p>
+        </div>
+        <div class="aim-card" style="background: var(--light-bg); color: var(--text-dark);">
+            <i class="fas fa-apple-alt" style="color: var(--secondary-color); font-size: 2rem;"></i>
+            <h4 style="margin-top:10px;">Watch the Sugar</h4>
+            <p>Limit sugary snacks and sodas. Choose water and crunchy fruits instead.</p>
+        </div>
+        <div class="aim-card" style="background: var(--light-bg); color: var(--text-dark);">
+            <i class="fas fa-sync" style="color: var(--secondary-color); font-size: 2rem;"></i>
+            <h4 style="margin-top:10px;">Change your Brush</h4>
+            <p>Replace your toothbrush every 3 months or after you have been sick.</p>
+        </div>
+    </div>
+</section>
+
+
+    <section id="aims">
+        <div class="aims-container">
+            <h2 class="section-title" style="color:white">Aims & Objectives</h2>
+            <div class="aims-grid">
+                <div class="aim-card">
+                    <i class="fas fa-bullhorn"></i>
+                    <h4>Awareness</h4>
+                    <p>To educate schools and rural communities on proper dental hygiene practices.</p>
+                </div>
+                <div class="aim-card">
+                    <i class="fas fa-hospital-user"></i>
+                    <h4>Outreach</h4>
+                    <p>To organize free dental camps providing checkups, cleanings, and basic extractions.</p>
+                </div>
+                <div class="aim-card">
+                    <i class="fas fa-handshake"></i>
+                    <h4>Partnerships</h4>
+                    <p>To collaborate with global health bodies to bring modern dental tech to Uganda.</p>
+                </div>
+                <div class="aim-card">
+                    <i class="fas fa-users"></i>
+                    <h4>Advocacy</h4>
+                    <p>To lobby for better oral health policies within the national healthcare system.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="inquiry">
+        <div class="form-container">
+            <div class="card-form">
+                <h3 style="margin-bottom:20px; color: var(--primary-color)">General Inquiry</h3>
+                <form id="inquiryForm">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea rows="5" placeholder="How can we help you?"></textarea>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+
+            <div id="signup" class="card-form" style="border: 2px solid var(--secondary-color);">
+                <h3 style="margin-bottom:20px; color: var(--secondary-color)">New Member Sign-Up</h3>
+                <form id="signupForm">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="tel" placeholder="Phone Number" required>
+                    <select required>
+                        <option value="">Select Role</option>
+                        <option value="dentist">Dental Professional</option>
+                        <option value="student">Student</option>
+                        <option value="volunteer">Volunteer</option>
+                        <option value="donor">Supporter</option>
+                    </select>
+                    <input type="password" placeholder="Create Password" required>
+                    <button type="submit" class="btn-submit" style="background: var(--secondary-color)">Register Now</button>
+                </form>
+            </div>
+        </div>
+    </section>                                                
+  
+<section id="donate" style="background: var(--light-bg); border-top: 5px solid var(--accent-color);">
+    <h2 class="section-title">Support Our Cause</h2>
+    <div style="text-align: center; max-width: 700px; margin: 0 auto 40px;">
+        <p>Your contribution helps us buy dental supplies, transport volunteers, and provide free treatment to those in need across Uganda.</p>
+    </div>
+
+    <style>
+         /* Specifically targeting the Donate icon and text in the Nav */
+.nav-links a.btn-donate-nav {
+    background-color: #28a745 !important; /* Professional Green */
+    color: white !important;
+    padding: 8px 20px;
+    border-radius: 25px;
+    transition: background 0.3s ease;
+}
+
+.nav-links a.btn-donate-nav:hover {
+    background-color: #218838 !important; /* Darker green on hover */
+}
+
+.nav-links a.btn-donate-nav i {
+    margin-right: 5px;
+}          
+/* This makes the heart icon beat like a real heart! */
+.btn-donate-nav i {
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+        }
+        .donate-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+        .donate-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .bank-details {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: left;
+            font-family: 'Courier New', Courier, monospace;
+            border-left: 4px solid var(--secondary-color);
+        }
+        .bank-details strong { color: var(--primary-color); }
+    </style>
+
+    <div class="donate-grid">
+        <div class="donate-card">
+            <i class="fas fa-university"></i>
+            <h3>Bank Transfer</h3>
+            <p>Direct deposit via Centenary Bank</p>
+            <div class="bank-details">
+                <strong>Bank:</strong> Centenary Bank<br>
+                <strong>Acc Name:</strong> Ora-Talk Dental Initiative<br>
+                <strong>Acc Number:</strong> 3202942070<br>
+                <strong>Branch:</strong> [Uganda]
+            </div>
+        </div>
+
+        <div class="donate-card">
+            <i class="fas fa-mobile-alt"></i>
+            <h3>Mobile Money</h3>
+            <p>For quick donations via MTN or Airtel</p>
+            <div class="bank-details" style="border-left-color: #ffcc00;">
+                <strong>MTN:</strong> +256 780508512<br>
+                <strong>Airtel:</strong> +256 7481498<br>
+                <strong>Name:</strong> Ora-Talk Initiative
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <footer id="contacts">
+        <div class="footer-content">
+            <div class="footer-box">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Kampala, Uganda<br>Plot 45, Health Road</p>
+            </div>
+            <div class="footer-box">
+                <i class="fas fa-phone"></i>
+                <p>+256 757909779<br>+256 789841851</p>
+            </div>
+            <div class="footer-box">
+                <i class="fas fa-envelope"></i>
+                <p>info@ora-talk.ug<br>join@ora-talk.ug</p>
+            </div>
+        </div>
+        <hr style="border: 0.5px solid #444; margin-bottom: 20px;">
+        <p>&copy; 2025 Ora-Talk Dental Initiative Uganda. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Simple Form Submission Handler
+        document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your inquiry! Our team will contact you soon.');
+            this.reset();
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Welcome to Ora-Talk! Your membership registration was successful.');
+            this.reset();
+        });
+
+        // Navbar scroll effect
+        window.onscroll = function() {
+            const nav = document.querySelector('nav');
+            if (window.pageYOffset > 50) {
+                nav.style.padding = "0.5rem 5%";
+                nav.style.background = "#fff";
+            } else {
+                nav.style.padding = "1rem 5%";
+            }
+        };
+    </script>
+</body>
+</html>
